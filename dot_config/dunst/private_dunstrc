@@ -1,0 +1,133 @@
+# ============================================
+# Dunst — macOS Notification Theme
+# ============================================
+
+[global]
+    # ── Display ─────────────────────────────
+    monitor = 0
+    follow = mouse
+
+    # ── Geometry ────────────────────────────
+    # macOS notifications appear top-right
+    origin = top-right
+    offset = 16x52
+    width = (280, 400)
+    height = 200
+    padding = 14
+    horizontal_padding = 16
+    text_icon_padding = 12
+    gap_size = 8
+
+    # ── Appearance ──────────────────────────
+    transparency = 10
+    corner_radius = 12
+    frame_width = 1
+    frame_color = "#3a3a3c"
+
+    # Background is set per-urgency below
+    background = "#1c1c1e"
+    foreground = "#e8e8e8"
+
+    separator_color = "#3a3a3c"
+    separator_height = 1
+
+    # ── Text ────────────────────────────────
+    font = SF Pro Display 12
+    # Fallback fonts (dunst uses fontconfig):
+    # Install noto-fonts and ttf-sf-pro for best results
+    line_height = 2
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+
+    # ── Icons ───────────────────────────────
+    icon_theme = Papirus-Dark, Papirus, hicolor
+    enable_recursive_icon_lookup = true
+    icon_position = left
+    min_icon_size = 36
+    max_icon_size = 36
+    icon_corner_radius = 8
+
+    # ── Behaviour ───────────────────────────
+    sort = yes
+    indicate_hidden = yes
+    show_indicators = no
+    sticky_history = yes
+    history_length = 20
+    always_run_script = true
+    ignore_dbusclose = false
+
+    # ── Progress bar ────────────────────────
+    progress_bar = true
+    progress_bar_height = 4
+    progress_bar_frame_width = 0
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 2
+
+    # ── Mouse ────────────────────────────────
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+    # ── Scripts ─────────────────────────────
+    # Uncomment to enable notification sounds:
+    # script = ~/.config/dunst/notify-sound.sh
+
+[experimental]
+    per_monitor_dpi = false
+
+# ── Urgency levels ───────────────────────────
+[urgency_low]
+    background  = "#1c1c1edb"
+    foreground  = "#adadad"
+    frame_color = "#3a3a3c"
+    timeout     = 4
+    # macOS-style: subtle, shorter timeout
+
+[urgency_normal]
+    background  = "#1c1c1edb"
+    foreground  = "#e8e8e8"
+    frame_color = "#3a3a3c"
+    timeout     = 6
+
+[urgency_critical]
+    background  = "#2c1417db"
+    foreground  = "#ff453a"
+    frame_color = "#ff453a"
+    timeout     = 0
+    # Never auto-dismiss critical notifications
+
+# ── App-specific overrides ───────────────────
+
+[spotify]
+    appname = Spotify
+    background = "#1c2a1edb"
+    foreground = "#30d158"
+    frame_color = "#30d158"
+    timeout = 4
+
+[discord]
+    appname = discord
+    background = "#1a1c2edb"
+    foreground = "#7289da"
+    frame_color = "#7289da"
+
+[volume]
+    appname = "volume"
+    background = "#1c1c1edb"
+    foreground = "#e8e8e8"
+    frame_color = "#3a3a3c"
+    timeout = 2
+    progress_bar = true
+
+[battery_warn]
+    summary = "*Battery*"
+    urgency = critical
+    background = "#2c1417db"
+    foreground = "#ff9f0a"
+    frame_color = "#ff9f0a"

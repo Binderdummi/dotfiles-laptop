@@ -1,0 +1,228 @@
+/* ============================================
+   Waybar — macOS Ventura Dark Theme
+   ============================================ */
+
+* {
+    font-family: "SF Pro Display",
+                 "Symbols Nerd Font Mono", "Symbols Nerd Font";
+    font-size: 13px;
+    font-weight: 400;
+    border: rgba(255, 255, 255, 0.6);
+    border-radius: 14;
+    min-height: 0;
+}
+
+/* ── Root bar ───────────────────────────────── */
+window#waybar {
+    background: rgba(28, 28, 30, 0.6);
+    color: #e8e8e8;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+}
+
+/* Blur only works with compositor blur rules in Hyprland:
+   decoration { blur { enabled = true } }
+   layerrule = blur, waybar
+   layerrule = ignorezero, waybar
+*/
+
+/* ── Base module pill style ─────────────────── */
+.modules-left,
+.modules-right,
+.modules-center {
+    padding: 0 6px;
+}
+
+#custom-apple,
+#workspaces,
+#window,
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#network,
+#battery,
+#tray,
+#custom-notification {
+    padding: 4px 10px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    color: #e8e8e8;
+    background: transparent;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* ── Apple Logo ─────────────────────────────── */
+#custom-apple {
+    font-size: 16px;
+    padding: 4px 12px 4px 8px;
+    color: #e8e8e8;
+    background: transparent;
+}
+
+#custom-apple:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Workspaces ─────────────────────────────── */
+#workspaces {
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+#workspaces button {
+    padding: 0 4px;
+    color: rgba(255, 255, 255, 0.3);
+    background: transparent;
+    font-size: 10px;
+    min-width: 0;
+    transition: color 0.2s ease;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    color: #ffffff;
+    font-size: 10px;
+}
+
+#workspaces button.urgent {
+    color: #FF453A;
+}
+
+#workspaces button:hover {
+    color: rgba(255, 255, 255, 0.7);
+    background: transparent;
+    box-shadow: none;
+}
+
+/* ── Active window title ────────────────────── */
+#window {
+    color: rgba(232, 232, 232, 0.65);
+    font-size: 12px;
+    font-weight: 300;
+    padding: 4px 12px;
+}
+
+/* ── Clock (center) ─────────────────────────── */
+#clock {
+    font-size: 13px;
+    font-weight: 500;
+    color: #e8e8e8;
+    letter-spacing: 0.01em;
+    padding: 4px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+#clock:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Right-side status modules ──────────────── */
+#cpu,
+#memory,
+#pulseaudio,
+#network,
+#battery {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(232, 232, 232, 0.85);
+}
+
+#cpu:hover,
+#memory:hover,
+#pulseaudio:hover,
+#network:hover,
+#battery:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+/* ── CPU ────────────────────────────────────── */
+#cpu {
+    color: #30D158;  /* macOS green */
+}
+
+/* ── Memory ─────────────────────────────────── */
+#memory {
+    color: #5E5CE6;  /* macOS purple */
+}
+
+/* ── Audio ──────────────────────────────────── */
+#pulseaudio {
+    color: rgba(232, 232, 232, 0.85);
+}
+
+#pulseaudio.muted {
+    color: rgba(232, 232, 232, 0.35);
+}
+
+/* ── Network ────────────────────────────────── */
+#network {
+    color: rgba(232, 232, 232, 0.85);
+}
+
+#network.disconnected {
+    color: #FF453A;
+}
+
+/* ── Battery ────────────────────────────────── */
+#battery {
+    color: rgba(232, 232, 232, 0.85);
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #30D158;
+}
+
+#battery.warning:not(.charging) {
+    color: #FF9F0A;
+}
+
+#battery.critical:not(.charging) {
+    color: #FF453A;
+}
+
+/* ── System tray ────────────────────────────── */
+#tray {
+    padding: 4px 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: rgba(255, 69, 58, 0.2);
+    border-radius: 6px;
+}
+
+/* ── Notification bell ──────────────────────── */
+#custom-notification {
+    font-size: 14px;
+    color: rgba(232, 232, 232, 0.7);
+}
+
+#custom-notification:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+/* ── Tooltips ───────────────────────────────── */
+tooltip {
+    background: rgba(28, 28, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #e8e8e8;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: #e8e8e8;
+    font-size: 12px;
+}

@@ -1,0 +1,123 @@
+/* ============================================
+   Wofi — macOS Spotlight Theme
+   ============================================
+   Pair with this wofi config (~/.config/wofi/config):
+
+   width=620
+   height=400
+   location=center
+   show=drun
+   prompt=Search
+   filter_rate=100
+   allow_markup=true
+   no_actions=true
+   halign=fill
+   orientation=vertical
+   content_halign=fill
+   insensitive=true
+   allow_images=true
+   image_size=24
+   gtk_dark=true
+   layer=overlay
+*/
+
+/* ── Root window ────────────────────────────── */
+window {
+    font-family: "SF Pro Display", "Helvetica Neue", "Cantarell", sans-serif;
+    font-size: 15px;
+    background-color: transparent;
+}
+
+/* ── Outer box ──────────────────────────────── */
+#outer-box {
+    background: rgba(28, 28, 30, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+                0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Search input ───────────────────────────── */
+#input {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #e8e8e8;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    caret-color: #0A84FF;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+#input:focus {
+    border-color: rgba(10, 132, 255, 0.5);
+    background: rgba(255, 255, 255, 0.09);
+}
+
+/* Placeholder text color */
+#input placeholder {
+    color: rgba(232, 232, 232, 0.3);
+}
+
+/* ── Scrollable results area ────────────────── */
+#scroll {
+    background: transparent;
+    border: none;
+    margin-top: 4px;
+}
+
+/* ── Inner box (each row container) ────────── */
+#inner-box {
+    background: transparent;
+}
+
+/* ── Each result entry ──────────────────────── */
+#entry {
+    background: transparent;
+    border-radius: 9px;
+    padding: 8px 12px;
+    margin: 2px 0;
+    color: #e8e8e8;
+    transition: background 0.12s ease;
+}
+
+#entry:selected,
+#entry:hover {
+    background: rgba(10, 132, 255, 0.25);
+    outline: none;
+    border: none;
+}
+
+#entry:selected #text,
+#entry:hover #text {
+    color: #ffffff;
+}
+
+/* ── App icon ───────────────────────────────── */
+#img {
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+/* ── App name text ──────────────────────────── */
+#text {
+    color: #e8e8e8;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* ── Unselected text dimming ────────────────── */
+#entry #text:not(:selected) {
+    color: rgba(232, 232, 232, 0.8);
+}
+
+/* ── No results message ─────────────────────── */
+#no-results {
+    color: rgba(232, 232, 232, 0.35);
+    font-size: 14px;
+    padding: 20px;
+}

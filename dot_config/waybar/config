@@ -1,0 +1,165 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
+
+    "modules-left": [
+        "custom/apple",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+    	"tray",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "network",
+        "battery",
+        "custom/notification"
+    ],
+
+    "custom/apple": {
+        "format": "󰀵",
+        "tooltip": false,
+	"on-click-left": "systemctl suspend",
+	"on-click-right": "hyprctl dispatch exit"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "●",
+            "2": "●",
+            "3": "●",
+            "4": "●",
+            "5": "●",
+            "urgent": "●",
+            "focused": "●",
+            "default": "○"
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "persistent-workspaces": {
+            "*": 3
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "": "Desktop"
+        }
+    },
+
+    "clock": {
+        "format": "󰥔  {:%a %b %e  %I:%M %p}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#e8e8e8'><b>{}</b></span>",
+                "days":       "<span color='#adadad'>{}</span>",
+                "weeks":      "<span color='#6e6e6e'><b>W{}</b></span>",
+                "weekdays":   "<span color='#7d7d7d'><b>{}</b></span>",
+                "today":      "<span color='#0A84FF'><b>{}</b></span>"
+            }
+        }
+    },
+
+    "cpu": {
+        "format": "󰻠  {usage}%",
+        "tooltip-format": "CPU: {usage}%\nLoad: {load}",
+        "interval": 2,
+        "on-click": "kitty -e htop"
+    },
+
+    "memory": {
+        "format": "󰍛  {used:0.1f}G",
+        "tooltip-format": "RAM: {used:0.1f}GiB / {total:0.1f}GiB\nSwap: {swapUsed:0.1f}GiB / {swapTotal:0.1f}GiB",
+        "interval": 5,
+        "on-click": "kitty -e htop"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟  Muted",
+        "format-icons": {
+            "headphone":  "󰋋",
+            "hands-free": "󰋎",
+            "headset":    "󰋎",
+            "phone":      "󰏲",
+            "portable":   "󰏲",
+            "car":        "󰄋",
+            "default":    ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+        "smooth-scrolling-threshold": 1
+    },
+
+    "network": {
+        "format-wifi":        "󰤨  {essid}",
+        "format-ethernet":    "󰈀  {ipaddr}",
+        "format-disconnected": "󰤭  Disconnected",
+        "format-linked":      "󰈀  {ifname} (No IP)",
+        "tooltip-format-wifi":     "󰤨  {essid}  {signalStrength}%\n󰩟  {ipaddr}\n󰠝  {frequency}GHz",
+        "tooltip-format-ethernet": "󰈀  {ifname}\n󰩟  {ipaddr}",
+        "on-click": "nm-connection-editor",
+        "interval": 5
+    },
+
+    "battery": {
+        "states": {
+            "good":     80,
+            "warning":  30,
+            "critical": 15
+        },
+        "format":          "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-plugged":  "󰁹  {capacity}%",
+        "format-icons":    ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰂃"],
+        "tooltip-format":  "{timeTo} — {capacity}% ({power:.1f}W)"
+    },
+
+    "tray": {
+        "icon-size": 14,
+        "spacing": 8
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification":               "<span foreground='#FF453A'>󰂚</span>",
+            "none":                       "󰂚",
+            "dnd-notification":           "<span foreground='#FF453A'>󰂛</span>",
+            "dnd-none":                   "󰂛",
+            "inhibited-notification":     "<span foreground='#FF453A'>󰂚</span>",
+            "inhibited-none":             "󰂚",
+            "dnd-inhibited-notification": "<span foreground='#FF453A'>󰂛</span>",
+            "dnd-inhibited-none":         "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    }
+}
